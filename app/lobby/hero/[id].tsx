@@ -22,7 +22,7 @@ export default function hero() {
   const { id } = useLocalSearchParams();
 
   useEffect(() => {
-    fetch("http://10.0.0.133:8000/hero/" + id)
+    fetch("http://wbgl.eu/api/v1/hero/" + id)
       .then((response) => response.json())
       .then((data) => {
         setData(data);
@@ -49,6 +49,8 @@ export default function hero() {
             justifyContent : "center",
             flexGrow: 1,
             rowGap: 32,
+            paddingTop : 128,
+            paddingBottom : 64
           }}
         >
           {isLoading ? (
@@ -59,7 +61,7 @@ export default function hero() {
                 <Image
                   style={{ height: 64, width: 64 }}
                   source={{
-                    uri: `http://10.0.0.133:8000/assets/${data.icon}`,
+                    uri: `http://wbgl.eu/api/v1/assets/${data.icon}`,
                   }}
                 />
                 <Text style={styles.header}>{data.name}</Text>
@@ -90,7 +92,7 @@ export default function hero() {
                     <Image
                       style={{ height: 64, width: 64 }}
                       source={{
-                        uri: `http://10.0.0.133:8000/assets/${e.icon}`,
+                        uri: `http://wbgl.eu/api/v1/assets/${e.icon}`,
                       }}
                     />
                     <Text style={styles.header}>{e.name}</Text>

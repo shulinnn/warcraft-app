@@ -90,23 +90,37 @@ export interface Creep {
 }
 
 export interface Unit {
-  id: number
-  name: string
-  icon: string
-  priceGold: number
-  priceWood: number
-  health: number
-  damage: number
-  tech: number
-  range: number
-  movement: number
-  attack_type: string
-  special_unit: boolean
-  unit_type: string
-  buildingId: any
-  created_at: string
-  updated_at: string
-  raceId: number
-  ability: Ability[]
-  building: Building[]
+  id: number;
+  name: string;
+  icon: string;
+  priceGold: number;
+  priceWood: number;
+  health: number;
+  damage: number;
+  tech: number;
+  range: number;
+  movement: number;
+  attack_type: string;
+  special_unit: boolean;
+  unit_type: string;
+  buildingId: any;
+  created_at: string;
+  updated_at: string;
+  raceId: number;
+  ability: Ability[];
+  building: Building[];
+}
+
+export interface Upgrade {
+  id: number;
+  name: string;
+  price_gold: number;
+  price_wood: number;
+  icon: string;
+  description: string;
+  tech: number;
+  created_at: string;
+  updated_at: string;
+  raceId: number;
+  ability: any[];
 }

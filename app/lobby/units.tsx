@@ -40,7 +40,7 @@ export default function units() {
       })
       .then(() => {
         if (raceId != 0)
-          fetch("http://10.0.0.133:8000/units/" + raceId)
+          fetch("http://wbgl.eu/api/v1/units/" + raceId)
             .then((response) => response.json())
             .then((data) => {
               setData(data);
@@ -90,7 +90,7 @@ export default function units() {
                         height={64}
                         width={64}
                         source={{
-                          uri: `http://10.0.0.133:8000/assets/${e.icon}`,
+                          uri: `http://wbgl.eu/api/v1/assets/${e.icon}`,
                         }}
                         resizeMethod="resize"
                       />

@@ -30,7 +30,7 @@ export default function index() {
 
   useEffect(() => {
     setTimeout(() => {
-      fetch("http://10.0.0.133:8000/races")
+      fetch("http://wbgl.eu/api/v1/races")
         .then((response) => response.json())
         .then((data) => {
           setData(data);
@@ -60,7 +60,7 @@ export default function index() {
                     <Image
                       style={{ height: 240, width: 240 }}
                       source={{
-                        uri: `http://10.0.0.133:8000/assets/${e.icon}`,
+                        uri: `http://wbgl.eu/api/v1/assets/${e.icon}`,
                       }}
                     />
                     <Text
@@ -75,7 +75,7 @@ export default function index() {
                     <Image
                       style={{ height: 64, width: 64 }}
                       source={{
-                        uri: `http://10.0.0.133:8000/assets/${e.ability.icon}`,
+                        uri: `http://wbgl.eu/api/v1/assets/${e.ability.icon}`,
                       }}
                     />
                     <Text

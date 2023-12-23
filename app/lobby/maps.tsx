@@ -22,7 +22,7 @@ export default function heroes() {
 
   useEffect(() => {
     if (isLoading)
-      fetch("http://10.0.0.133:8000/maps")
+      fetch("http://wbgl.eu/api/v1/maps")
         .then((response) => response.json())
         .then((data) => {
           setData(data);
@@ -67,7 +67,7 @@ export default function heroes() {
                       height={32}
                       width={32}
                       source={{
-                        uri: `http://10.0.0.133:8000/assets/${e.image}`,
+                        uri: `http://wbgl.eu/api/v1/assets/${e.image}`,
                       }}
                       resizeMethod="resize"
                     />

@@ -1,24 +1,24 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useEffect, useState } from "react";
-import { Card } from "../../types";
+import appBackground from "../../assets/bg.jpg";
+import { Upgrade } from "../../types";
 import {
   ImageBackground,
+  ScrollView,
+  Text,
   View,
   StyleSheet,
   ActivityIndicator,
-  Text,
-  ScrollView,
+  Pressable,
   Image,
 } from "react-native";
 import { MenuButton } from "../../components/MenuButton";
-import appBackground from "../../assets/bg.jpg";
-import { Chip } from "../../components/Chip";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import React from "react";
-import { ColorTheme } from "../../color-theme";
+import { Chip } from "../../components/Chip";
 
-export default function cards() {
+export default function blacksmith() {
   const [isLoading, setIsLoading] = useState(true);
-  const [data, setData] = useState([] as Card[]);
+  const [data, setData] = useState([] as Upgrade[]);
   const [raceId, setRaceId] = useState(0);
 
   useEffect(() => {
@@ -38,7 +38,7 @@ export default function cards() {
       })
       .then(() => {
         if (raceId != 0)
-          fetch("http://wbgl.eu/api/v1/cards/race/" + raceId)
+          fetch("http://wbgl.eu/api/v1/upgrades/race/" + raceId)
             .then((response) => response.json())
             .then((data) => {
               setData(data);
@@ -80,6 +80,7 @@ export default function cards() {
                     style={{
                       flexDirection: "row",
                       columnGap: 16,
+                      rowGap: 16,
                       alignItems: "center",
                     }}
                   >
@@ -95,15 +96,58 @@ export default function cards() {
                       {e.name}
                     </Text>
                   </View>
-                  <Chip
-                    chipText={`${e.times_in_deck} X`}
-                    backgroundColor="#2F95DC"
-                  />
-                </View>
-                <View style={{ flexDirection: "row" }}>
-                  <Text style={{ color: ColorTheme.white, fontSize: 14 }}>
-                    {e.description}
-                  </Text>
+                  <View
+                    style={{ flexDirection: "row", minWidth: "100%", gap: 8 }}
+                  >
+                    <Chip
+                      backgroundColor="#2F95DC"
+                      chipText={e.price_gold.toString() + " gold"}
+                    />
+                    <Chip
+                      backgroundColor="#2F95DC"
+                      chipText={e.price_wood.toString() + " wood"}
+                    />
+                    <Chip
+                      backgroundColor="#2F95DC"
+                      chipText={e.tech.toString() + " tech"}
+                    />
+                  </View>
+                  {e.ability.length >= 0 ? (
+                    <View style={{ flexDirection: "column", rowGap: 8 }}>
+                      {e.ability.length > 0 ? (
+                        e.ability.map((c, x) => (
+                          <View
+                            key={x}
+                            style={{
+                              flexWrap: "wrap",
+                              flexDirection: "row",
+                              rowGap: 16,
+                              columnGap: 16,
+                              alignItems: "center",
+                            }}
+                          >
+                            <Image
+                              width={45}
+                              height={45}
+                              source={{
+                                uri: `http://wbgl.eu/api/v1/assets/${c.icon}`,
+                              }}
+                            />
+                            <Text style={{ color: "#FFF", fontSize: 18 }}>
+                              {c.name}
+                            </Text>
+                            <View style={{ minWidth: "100%" }}>
+                              <Text style={{ color: "#FFF" }}>
+                                {c.description}
+                              </Text>
+                            </View>
+                          </View>
+                        ))
+                      ) : (
+                        <Text style={{ color: "#FFF" }}>{e.description}</Text>
+                      )}
+                    </View>
+                  ) : null}
                 </View>
               </React.Fragment>
             ))
@@ -124,9 +168,9 @@ const styles = StyleSheet.create({
   },
   page: {
     flex: 1,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    flexDirection: "column",
+    rowGap: 16,
+    alignItems: "flex-start",
   },
   header: {
     fontSize: 18,

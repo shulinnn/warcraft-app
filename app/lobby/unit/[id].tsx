@@ -23,7 +23,7 @@ export default function hero() {
 
   useEffect(() => {
     if (isLoading)
-      fetch("http://10.0.0.133:8000/unit/" + id)
+      fetch("http://wbgl.eu/api/v1/unit/" + id)
         .then((response) => response.json())
         .then((data) => {
           setData(data);
@@ -61,7 +61,7 @@ export default function hero() {
                 <Image
                   style={{ height: 64, width: 64 }}
                   source={{
-                    uri: `http://10.0.0.133:8000/assets/${data.icon}`,
+                    uri: `http://wbgl.eu/api/v1/assets/${data.icon}`,
                   }}
                 />
                 <Text style={styles.header}>{data.name}</Text>
@@ -132,7 +132,7 @@ export default function hero() {
                       <Image
                         style={{ height: 64, width: 64 }}
                         source={{
-                          uri: `http://10.0.0.133:8000/assets/${e.icon}`,
+                          uri: `http://wbgl.eu/api/v1/assets/${e.icon}`,
                         }}
                       />
                       <Text style={styles.header}>{e.name}</Text>
@@ -164,7 +164,7 @@ export default function hero() {
                       <Image
                         style={{ height: 64, width: 64 }}
                         source={{
-                          uri: `http://10.0.0.133:8000/assets/${e.icon}`,
+                          uri: `http://wbgl.eu/api/v1/assets/${e.icon}`,
                         }}
                       />
                       <Text style={styles.header}>{e.name}</Text>

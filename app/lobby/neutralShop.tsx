@@ -21,7 +21,7 @@ export default function neutralShop() {
   const [data, setData] = useState([] as Item[]);
 
   useEffect(() => {
-    fetch("http://10.0.0.133:8000/items/race/neutral")
+    fetch("http://wbgl.eu/api/v1/items/race/neutral")
       .then((response) => response.json())
       .then((data) => {
         setData(data);
@@ -69,7 +69,7 @@ export default function neutralShop() {
                       height={64}
                       width={64}
                       source={{
-                        uri: `http://10.0.0.133:8000/assets/${e.icon}`,
+                        uri: `http://wbgl.eu/api/v1/assets/${e.icon}`,
                       }}
                       resizeMethod="resize"
                     />

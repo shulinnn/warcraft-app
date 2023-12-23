@@ -1,6 +1,5 @@
 import {
   ImageBackground,
-  Pressable,
   StyleSheet,
   View,
   Text,
@@ -9,8 +8,6 @@ import {
 } from "react-native";
 import appBackground from "../../assets/bg.jpg";
 import { useNavigation } from "expo-router";
-import { DrawerActions } from "@react-navigation/native";
-import { Feather } from "@expo/vector-icons";
 import { useEffect, useState } from "react";
 import { ColorTheme } from "../../color-theme";
 import { Race, Ability } from "../../types";
@@ -42,7 +39,7 @@ export default function index() {
       })
       .then(() => {
         if (raceId != 0)
-          fetch("http://10.0.0.133:8000/race/" + raceId)
+          fetch("http://wbgl.eu/api/v1/race/" + raceId)
             .then((response) => response.json())
             .then((data) => {
               setData(data);
@@ -73,7 +70,7 @@ export default function index() {
                 <Image
                   style={{ height: 240, width: 240 }}
                   source={{
-                    uri: `http://10.0.0.133:8000/assets/${data?.icon}`,
+                    uri: `http://wbgl.eu/api/v1/assets/${data?.icon}`,
                   }}
                 />
                 <Text
@@ -88,7 +85,7 @@ export default function index() {
                 <Image
                   style={{ height: 64, width: 64 }}
                   source={{
-                    uri: `http://10.0.0.133:8000/assets/${data.ability.icon}`,
+                    uri: `http://wbgl.eu/api/v1/assets/${data.ability.icon}`,
                   }}
                 />
                 <Text

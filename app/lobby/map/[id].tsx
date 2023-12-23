@@ -20,7 +20,7 @@ export default function map() {
   const { id } = useLocalSearchParams();
 
   useEffect(() => {
-    fetch("http://10.0.0.133:8000/map/" + id)
+    fetch("http://wbgl.eu/api/v1/map/" + id)
       .then((response) => response.json())
       .then((data) => {
         setData(data);
@@ -53,7 +53,7 @@ export default function map() {
                 height={Dimensions.get("window").height - 64}
                 style={{ resizeMode: "contain" }}
                 source={{
-                  uri: `http://10.0.0.133:8000/assets/${data.image}`,
+                  uri: `http://wbgl.eu/api/v1/assets/${data.image}`,
                 }}
               />
             </View>

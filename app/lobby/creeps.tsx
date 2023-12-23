@@ -23,7 +23,7 @@ export default function shop() {
   const [raceId, setRaceId] = useState(0);
 
   useEffect(() => {
-    fetch("http://10.0.0.133:8000/creeps")
+    fetch("http://wbgl.eu/api/v1/creeps")
       .then((response) => response.json())
       .then((data) => {
         setData(data);
@@ -72,7 +72,7 @@ export default function shop() {
                       height={64}
                       width={64}
                       source={{
-                        uri: `http://10.0.0.133:8000/assets/${e.icon}`,
+                        uri: `http://wbgl.eu/api/v1/assets/${e.icon}`,
                       }}
                       style={{ resizeMode: "contain" }}
                     />

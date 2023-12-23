@@ -11,6 +11,7 @@ export default function Layout() {
       <StatusBar hidden />
       <Drawer
         initialRouteName="index"
+        defaultStatus="closed"
         screenOptions={{
           headerShown: false,
           swipeEnabled: false,
@@ -43,6 +44,13 @@ export default function Layout() {
           name="lobby/tavern"
           options={{
             drawerLabel: "Taverna",
+            unmountOnBlur: true,
+          }}
+        />
+        <Drawer.Screen
+          name="lobby/blacksmith"
+          options={{
+            drawerLabel: "Kovárna",
             unmountOnBlur: true,
           }}
         />

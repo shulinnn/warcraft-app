@@ -39,7 +39,7 @@ export default function shop() {
       })
       .then(() => {
         if (raceId != 0 && isLoading)
-          fetch("http://10.0.0.133:8000/items/race/" + raceId)
+          fetch("http://wbgl.eu/api/v1/items/race/" + raceId)
             .then((response) => response.json())
             .then((data) => {
               setData(data);
@@ -88,7 +88,7 @@ export default function shop() {
                       height={64}
                       width={64}
                       source={{
-                        uri: `http://10.0.0.133:8000/assets/${e.icon}`,
+                        uri: `http://wbgl.eu/api/v1/assets/${e.icon}`,
                       }}
                       resizeMethod="resize"
                     />
